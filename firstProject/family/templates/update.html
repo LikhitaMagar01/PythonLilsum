@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Update member</h1>
+        <form action="updaterecord/{{ myfamily.id }}" method="post">
+        {% csrf_token %}
+        First Name:<br>
+        <input name="first" value="{{ myfamily.firstName }}">
+        <br><br>
+        Last Name:<br>
+        <input name="last" value="{{ myfamily.lastName }}">
+        <br><br>
+        <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

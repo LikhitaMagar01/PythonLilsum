@@ -1,0 +1,20 @@
+<html>
+<body>
+
+<h1>My Family List!</h1>
+
+<table border="1">
+    {% for x in myfamily %}
+    <tr>
+        <td><a href="update/{{ x.id }}">{{ x.id }}</a></td>
+        <td>{{x.firstName}}</td>
+        <td>{{x.lastName}}</td>
+        <td><a href="delete/{{ x.id }}">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<p>
+    <a href="add/">wanna a new member</a>
+</p>
+</body>
+</html>

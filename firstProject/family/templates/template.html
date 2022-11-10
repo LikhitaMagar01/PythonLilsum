@@ -1,0 +1,32 @@
+<html>
+    <h5>
+        hello, I am {{ firstName }}.
+    </h5>
+    <h5>
+        {% with firstname="Tobias" %}
+        Hello {{ firstname }}, how are you?
+        {% endwith %}
+    </h5>
+    <h5>
+        {% for x in family %}
+        <li>
+           hello, I am {{ x.firstName }}. 
+        </li>
+        {% endfor %}
+    </h5>
+    <h5>
+        {% if good == 1 %}
+        <li>
+           you are one good
+        </li>
+        {% elif good == 2 %}
+        <li>
+           you are too good
+        </li>
+        {% else %}
+        <li>
+            your are other good
+        </li>
+        {% endif %}
+    </h5>
+</html>

@@ -1,0 +1,5 @@
+virtualEnv/
+VirtualEnv/
+db.sqlite3
+static/
+__pycache__/
