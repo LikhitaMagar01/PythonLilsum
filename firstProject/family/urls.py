@@ -11,6 +11,7 @@ urlpatterns = [
     path('update/<int:id>', views.update, name='update'),
     path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
     path('template/', views.template, name='template'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

@@ -1,4 +1,4 @@
-"""myHome URL Configuration
+"""myProject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -14,18 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.static import static
-from myHome import settings
-
+from django.urls import path
+from api import views
 urlpatterns = [
-    path('family/', include('family.urls')),
     path('admin/', admin.site.urls),
+    path('userinfo/<int:pk>', views.user_detail),
+    path('userinfo/', views.user_list)
 ]
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-# if settings.DEBUG:
-#     urlpatterns += [static(settings.MEDIA_URL,
-#                           document_root=settings.MEDIA_ROOT),
-#                           static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-#     ]

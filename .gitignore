@@ -1,5 +1,8 @@
 virtualEnv/
 VirtualEnv/
+myVirtual/
+env/
+virtualVir/
 db.sqlite3
 static/
 __pycache__/
