@@ -1,4 +1,4 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from .models import Users
 from .serializers import UsersSerializer
 from rest_framework.renderers import JSONRenderer

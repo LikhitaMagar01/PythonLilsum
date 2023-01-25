@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from api import views
+from secAPi import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('userinfo/<int:pk>', views.user_detail),
-    path('userinfo/', views.user_list)
+    # path('userinfo/<int:pk>', views.user_detail),
+    # path('userinfo/', views.user_list),
+
+    path('stucreate/', views.student_create)
 ]
