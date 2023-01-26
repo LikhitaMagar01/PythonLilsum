@@ -375,3 +375,12 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # django-admin startproject myHome
 
 # pip freeze to see drf version
+
+# now create an app:
+# app is a web application that has specific meaning in the project like homepage, aboutpage, or members databases
+
+# python3 manage.py startapp family
+
+# migrate :
+# python3 manage.py makemigrations
+# python3 manage.py migrate
