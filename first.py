@@ -386,3 +386,4 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # python3 manage.py migrate
 
 # end
+# yolo- you only live for once
