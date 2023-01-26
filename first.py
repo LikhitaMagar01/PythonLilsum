@@ -384,3 +384,5 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # migrate :
 # python3 manage.py makemigrations
 # python3 manage.py migrate
+
+# end
