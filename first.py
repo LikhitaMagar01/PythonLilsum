@@ -343,9 +343,35 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # de-serialization is done when client gives json value from front-end
 # from rest_framework import serializers
 # class StudentSerializer(serializers.Serializer):
-#     name = serializers.CharField(max_length=100)
-#     city = serializers.CharField(max_length=100)
-#     phonenumber = serializers.IntegerField()
+# name = serializers.CharField(max_length=100)
+# city = serializers.CharField(max_length=100)
+# phonenumber = serializers.IntegerField()
 
 # def create(self, validate_data):
-#     return Student.objects.create(**validate_data)
+# return Student.objects.create(**validate_data)
+
+# Better way to create Django Project:
+# virtual environment:
+# in multiple project you need multiple virtual environment which helps in creating self-consistent and independent unit spaces on your system.
+
+# Install venv module to create virtual environment
+# sudo apt-get install -y python3-venv
+
+# now open a folder in you vs code or other text editor and in terminal:
+# python3 -m venv virtualEnv
+
+# this creates a folder of virtualEnv which will contains objects which are helping your to create a virtual environment
+
+# now, to activate the virtual environment:
+# source virtualEnv/bin/activate
+
+# install Django using pip:
+# python3 -m pip install Django
+
+# check django admin version:
+# django-admin –version
+
+# create a django project:
+# django-admin startproject myHome
+
+# pip freeze to see drf version
