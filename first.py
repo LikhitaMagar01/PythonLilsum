@@ -375,3 +375,5 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # django-admin startproject myHome
 
 # pip freeze to see drf version
+
+# end
