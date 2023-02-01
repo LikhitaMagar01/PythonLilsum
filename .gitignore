@@ -2,6 +2,7 @@ virtualEnv/
 VirtualEnv/
 myVirtual/
 env/
+classVir/
 virtualVir/
 db.sqlite3
 static/
