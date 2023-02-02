@@ -385,5 +385,120 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # python3 manage.py makemigrations
 # python3 manage.py migrate
 
+# GenericAPIView
+
+# attributes
+
+# queryset- should be used for returning objects from this view.
+#           either set this attributes or override get_queryset() instead of accessing this property directly.
+#           queryset will be evaluated once and those results are cached for all subsequent requests.
+
+# serializer_class- The serializer class that should be sued for validating and deserializing input and for serializing output. 
+#                   either set this attribute or override the get_serializer_class() method.
+
+# lookup_field- should be used for performing object lookup of individual model instances.
+#               it is default to pk
+
+# lookup_url_kwarg- the URL keyword argument that should be used for object lookup.
+#                   the URL conf should include a keyword argument corresponding to this value. If unset this defaults to using the same value as lookup_field.
+
+#pagination_class- pagination class should be used when paginating list results. 
+#                  defaults to same value as the DEFAULT_PAGINATION_CLASS setting, this is 'rest_framework.pagination.PageNumberPagination'.Settingpagination_class=None will be disable pagination on this view.
+
+# methods:
+# get_queryset(self)
+# returns queryset which is used for list views, and that should be used as the base for lookups in detail views. 
+# detault to returning the queryset specified by the queryset attribute.
+
+# get_object(self): 
+# it return an object instance that should be used for detail views. detaults to using the lookup_field parameter to filter the base queryset.
+
+# get_serializer_class(self):
+# returns the class that should be used for the serializer. defaults to returning the serializer_class attribute.
+
+# get_serializer_context(self):
+# returns a dictionary containing any extra context that should be supplied to the serializer. detaults to including 'request', 'view', and 'format' keys.
+
+# get_serializer(self, instance=None, many=False, partial= False)
+# it returns a serializer instance
+
+# get_paginated_response(self, data)
+# it returns a serializer instance
+
+# paginate_queryset(self, queryset)
+# paginate a queryset if required, either returning a page object or None if pagination is not configured for this view.
+
+# filter_queryset(self, queryset)
+# give a queryset, filter it with whichever filter backends are in use, returning a new queryset.
+
+# mixins
+# common behavior CRUD are implemented provided by mixin classes
+# ListModelMixin
+# CreateModelMixin
+# RetrieveModelMixin
+# UpdateModelMixin
+# DestroyModelMixin
+
+# ListModelMixin
+# provides a list(request, *args, **kwargs) methods that implements listing a queryset.
+# if the queryset is populated, returns 200 OK response, with a serialized representation of the queryset as the response.
+# from rest_framework.mixins import ListModelMixin
+# from rest_framework.generics import GenericAPIView
+# class StudentList(ListModelMixin, GenericAPIView):
+#   queryset = Student.objects.all()
+#   serializer_class = StudentSerializer
+#   def get(self, request, *args, **kwargs):
+#      return self.list(request, *args, **kwargs)
+
+# CreateModelMixin
+# provides a create(request, *args, **kwargs) method
+# implements creating and saving a new model instance
+# if an object creates return 201 resonse with serialized representation contains a key named url, then location header of the response will be populated with that value.
+# else 400 bad request response will be returned with the error details as the body of the response
+# from rest_framework.mixins import CreateModelMixin
+# from rest_framework.generics import GenericAPIView
+# class StudentCreate(CreateModelMixin, GenericAPIView):
+#   queryset = Student.objects.all()
+#   serializer_class = StudentSerializer
+#   def post(self, request, *args, **kwargs):
+#      return self.create(request, *args, **kwargs)
+
+# RetrieveModelMixin
+# provides a retrieve(request, *args, **kwargs) method
+# if an object is retrieve, return 20 resonse with serialized representation of the object as the body of the response
+# else 404 bad request response will be returned with the error details as the body of the response
+# from rest_framework.mixins import RetrieveModelMixin
+# from rest_framework.generics import GenericAPIView
+# class StudentCreate(RetrieveModelMixin, GenericAPIView):
+#   queryset = Student.objects.all()
+#   serializer_class = StudentSerializer
+#   def post(self, request, *args, **kwargs):
+#      return self.retrieve(request, *args, **kwargs)
+
+# UpdateModelMixin
+# provides a update(request, *args, **kwargs) method
+# provides partial_update(request, *args, **kwargs)
+# if an object is update, return 20 resonse with serialized representation of the object as the body of the response
+# else 400 bad request response will be returned with the error details as the body of the response
+# from rest_framework.mixins import UpdateModelMixin
+# from rest_framework.generics import GenericAPIView
+# class StudentCreate(UpdateModelMixin, GenericAPIView):
+#   queryset = Student.objects.all()
+#   serializer_class = StudentSerializer
+#   def post(self, request, *args, **kwargs):
+#      return self.update(request, *args, **kwargs)
+
+# DestroyModelMixin
+# provides a destroy(request, *args, **kwargs) method
+# if an object is destoy, return 204 No content response,
+# else 404 bad request response will be returned with the error details as the body of the response
+# from rest_framework.mixins import UpdateModelMixin
+# from rest_framework.generics import GenericAPIView
+# class StudentCreate(DestroyModelMixin, GenericAPIView):
+#   queryset = Student.objects.all()
+#   serializer_class = StudentSerializer
+#   def post(self, request, *args, **kwargs):
+#      return self.destroy(request, *args, **kwargs)
+
 # end
 # yolo- you only live for once
