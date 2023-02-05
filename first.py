@@ -500,5 +500,98 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 #   def post(self, request, *args, **kwargs):
 #      return self.destroy(request, *args, **kwargs)
 
+# Concrete View class
+# ListAPIView- use for read-only endpoints to represent a collection of model instances
+#              provide get handler
+#              extends of GenericAPIView, ListModelMixin
+
+# from rest_framework.generics import ListAPIView
+# class StudentList(ListAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# CreateAPIView
+# create only endpoints
+# provides a post method handler
+#              extends of GenericAPIView, CreateModelMixin
+
+# from rest_framework.generics import CreateAPIView
+# class StudentCreate(CreateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# RetrieveAPIView
+# read only endpoints
+# provides a get method handler
+#              extends of GenericAPIView, RetrieveModelMixin
+
+# from rest_framework.generics import RetrieveAPIView
+# class StudentRetrieve(RetrieveAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# UpdateAPIView
+# update only endpoints
+# provides a put and patch method handler
+#              extends of GenericAPIView, UpdateAPIView
+
+# from rest_framework.generics import UpdateAPIView
+# class StudentUpdate(UpdateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# DestroyAPIView
+# delete only endpoints
+# provides a delete method handler
+#              extends of GenericAPIView, DestroyAPIView
+
+# from rest_framework.generics import DestroyAPIView
+# class StudentDelete(DestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# ListCreateAPIView
+# RetrieveUpdateAPIView
+# RetrieveUpdateDestroyAPIView
+
+# ViewSet
+# allows to combine the logic for a set of related views in a single class, called viewset
+# advantages
+# repeated logic can be combined into a single class
+# no longer need to deal with writing URL conf ourselves
+
+# ViewSet Class
+# type of class-based view
+# no get() or post()
+# yess list(), retrieve(), create(), update(), partial_update() and destroy()
+
+# attributes
+# basename- the base to use for the URL names that are created
+# action- name of current action
+# detail- boolean indicating if the current action is configured for a list or detail view
+# suffix- the display suffix for the viewset type- mirrors the detail attribute
+# name- the display name for the viewset. argument is manually exclusive to suffix
+# description- the display description for the individual view of a viewset
+
+# ViewSet- URL Config
+# from django.urls import path, include
+# from api import views
+# from rest_framework.routers import DefaultRouter
+
+# router = DefaultRouter()
+# router.register('studentapi', views.StudentViewSet, basename='student')
+
+# urlpatterns=[
+#     path('', include(router.urls)),
+# ]
+
+# ModelViewSet class
+# inherits from GenericAPIView
+# implements various action - create, update, partial_update, and destroy.
+# class StudentViewSet(viewsets.ModelViewSet):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+
 # end
 # yolo- you only live for once
