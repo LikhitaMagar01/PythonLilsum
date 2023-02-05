@@ -1,23 +1,10 @@
-"""classProject URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 # from api import views
-from student import views
-
+# from student import views
+# from concreteAPI import views
+from viewSet import views
+from rest_framework.routers import DefaultRouter
 # api app
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
@@ -25,13 +12,40 @@ from student import views
 #     path('studentapi/<int:pk>', views.StudentAPI.as_view()),
 # ]
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
+# urlpatterns = [
+    # path('admin/', admin.site.urls),
     # path('kidsapi/', views.KidsList.as_view()),
     # path('kidsapi/', views.KidsCreate.as_view()),
     # path('kidsapi/<int:pk>', views.KidsRetrieve.as_view())
     # path('kidsapi/<int:pk>', views.KidsUpdate.as_view())
     # path('kidsapi/<int:pk>', views.KidsDelete.as_view())
     # path('kidsapi/', views.listCreateAPI.as_view()),
-    path('kidsapi/<int:pk>', views.RetrieveUpdateDelete.as_view())
+    # path('kidsapi/<int:pk>', views.RetrieveUpdateDelete.as_view())
+# ]
+
+# concreate
+# urlpatterns = [
+    # path('admin/', admin.site.urls),
+    # path('memberapi/', views.MemberList.as_view()),
+    # path('memberapi/', views.MemberCreate.as_view()),
+    # path('memberapi/<int:pk>', views.MemberRetrieve.as_view()),
+    # path('memberapi/', views.MemberUpdate.as_view()),
+    # path('memberapi/', views.MemberDestroy.as_view()),
+    # path('memberapi/', views.MemberListCreate.as_view()),
+    # path('memberapi/', views.MemberRetrieveUpdate.as_view()),
+    # path('memberapi/', views.MemberRetrieveDestroy.as_view()),
+    # path('memberapi/', views.MemberRetrieveUpdateDestroy.as_view()),
+#     path('studentapi/<int:pk>', views.StudentAPI.as_view()),
+# ]
+
+# ViewSet
+# Creating Router Object
+router = DefaultRouter()
+
+# Register FamilyViewSet with Router
+router.register('studentapi', views.FamilyViewSet, basename='student')
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]
