@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'student',
     'concreteAPI',
     'viewSet',
+    'modelViewSet',
+    'ReadOnlyModelView',
 ]
 
 MIDDLEWARE = [
