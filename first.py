@@ -592,6 +592,112 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 #     queryset = Student.objects.all()
 #     serializer_class = StudentSerializer
 
+# ReadOnlyModelViewSet Class
+# inherits from GenericAPIView
+# includes action - list() and retrieve()
+# use any standard attributes and method overrides available to GenericAPIView
+
+# class StudentReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
 # end
 # yolo- you only live for once
+
+############################
+
+# Validation
+# types
+
+# Field Level Validation
+# specify custom field-level validation by adding validate_fieldName methods to your Serializer subclass
+# syntax: def validate_fieldname(self, value)
+# example: def validate_roll (self, value)
+# value is the field value that requires validation
+# class StudentSerializer(serializers.Serializer):
+# name = serializers.CharField(max_length=100)
+# roll = serializers.IntegerField()
+# city = serializers.CharFIeld(max_length=100)
+# def validate_roll(self, value):
+# if value >=200:
+#     raise serializers.ValidationError('seat full')
+# return value
+
+# Object Level Validation
+# validation that requires access to multiple fields 
+# called validate() to Serializer subclass
+# raise serializers.ValidationError or just return validated values
+# syntax: def validate(self, data)
+# example: def validate(self, data)
+# where data is a dictionary of field values
+# class StudentSerializer(serializers.Serializer):
+# name = serializers.CharField(max_length=100)
+# roll = serializers.IntegerField()
+# city = serializers.CharFIeld(max_length=100)
+# def validate(self, data):
+#     mm = data.get('name')
+#     ct = data.get('city')
+#     if mm.lower()==='rohit' and ct.lower()!='rachi':
+#         raise serializers.ValidationError('city must be rachi')
+#     return data
+
+# Validators
+# introduce a proper separation of concerns, making your code behavior more obvious
+# from rest_framework import serializers
+# def starts_with_r(value):
+#     if value[0].lower()!='r':
+#         raise serializers.ValidationError('Name should start with R')
+#     class StudentSerializer(serializers.Serializer):
+#         name = serializers.CharField(max_length=100, validators=[starts_with_r])
+#         roll = serializers.IntegerField()
+#         city = serializers.CharField(max_lenght=100)
+
+#################################################
+
+# Authentication and Permission
+# first of, no restriction on our api to use it
+# implement authentication and permission in your api to always associate with a creator
+# authenticated users may create data
+# only the creator of a data may updte or delete it
+# unauthenticated requests should have a full read-only access
+
+# Authentication
+# mechanism of associating an incoming request with a set of identifying credential
+# permission and throttling policies can then use those credential to determine if the request should be permitted
+
+# authentication is always run at the very start
+# then permission and throttling is checked 
+
+# types
+# BasicAuthentication
+# SessionAuthentication
+# TokenAuthentication
+# RemoteUserAuthentication
+# CustomAuthentication
+
+# Basic Authentication
+# uses HTTP basic authentication, needed user name and password
+# appropriate for testing only
+# if authenticated, request.user will be a Django User instance
+# request.auth will be None
+
+# authenticated responses that are denied permission will result in HTTP 401 Unauthorized response with an appropriate WWW-authenticate header
+# www-authenticate: Basic realm='api'
+
+# if you are using in production, ensure your api is only available over https
+# your api client will always request the user and password at login and will bever store those details to persistent storage
+
+# Permission
+# grant or deny access for different classes users to different parts of the API
+# use authentication information in the request.user and request.auth properties to determine if the incoming request should be permitted
+
+# in rest_framework, 
+# permission are defined as a list permission classes
+#  AllowAny
+#  IsAuthenticated
+#  IsAdminUser
+#  IsAuthenticatedOrReadOnly
+#  DjangoModelPermissions
+#  DjangoModelPermissionOrAnonReadOnly
+#  DjangoObjectPermissions
+#  CustomPermission
