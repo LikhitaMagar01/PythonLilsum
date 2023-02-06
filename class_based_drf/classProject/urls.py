@@ -3,7 +3,9 @@ from django.urls import path, include
 # from api import views
 # from student import views
 # from concreteAPI import views
-from viewSet import views
+# from viewSet import views
+# from modelViewSet import views
+from ReadOnlyModelView import views
 from rest_framework.routers import DefaultRouter
 # api app
 # urlpatterns = [
@@ -43,7 +45,23 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 # Register FamilyViewSet with Router
-router.register('studentapi', views.FamilyViewSet, basename='student')
+# router.register('studentapi', views.FamilyViewSet, basename='student')
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', include(router.urls)),
+# ]
+
+# Register WorkerModelViewSet with Router
+# router.register('workerapi', views.WorkerModelViewSet, basename='worker')
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', include(router.urls)),
+# ]
+
+# Register readonlyviewset with router
+router.register('workerapi', views.ReadOnlyWorkerViewSet, basename='worker')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
