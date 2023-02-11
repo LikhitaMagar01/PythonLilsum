@@ -701,3 +701,97 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 #  DjangoModelPermissionOrAnonReadOnly
 #  DjangoObjectPermissions
 #  CustomPermission
+
+# AllowAny
+# allow permission whether authenticated or anauthenticated
+
+# IsAuthenticated
+# will deny permission to any anauthenticated user 
+# only be accessible to registered user
+
+# IsAdminUser
+# permission allowed to user.is_staff is True 
+
+# IsAuthenticatedOrReadOnly
+# allow authenticated users to perform any request
+# use if you want to allow to read permissions to anonymous users and only allow write permissions to authenticated users
+
+# DjangoModelPermissions
+# ties into Django's standard django.contrib.auth model permission
+# must be applied to views that have a queryset property set
+# authorization will be granted if the user is authenticated and relevant model permission is assigned
+# post request require add permission on the model
+# put and patch request require the user to have the change permission on the model
+# delete request require the user to have delete permission on the model
+# get request to view the data of the model
+# can be overridden the default behaviour DjangoModelPermissions
+
+# DjangoModelPermissionsOrAnonReadOnly
+# unauthenticated users can read-only access to the api
+
+# DjangoObjectPermissions
+# allows per-object permissions on models
+# need to add a permission backend that supports object-level permissions such as django-guardian
+
+# SessionAuthentication
+# uses django's default session backend for authentication
+# appropriate for AJAX client that are running in the same session content as your website
+# if sucessfull, provides crediential
+# if not permission is denied in http 403 forbidden response
+# request.user will be a django user isinstance
+# request.auth will be None
+
+# AJAX api with sessionAUthentication, you should include CSRF token for 'unsafe' http method call like post, put, patch, delete and retrieve
+
+# Custom Permission
+# overide BasePermission and implement either or both of the following methods
+# has_permission(self, request, view)
+# has_permission(self, request, view, obj)
+# methods should return True if the request should be granted acces else False to deny access
+
+# TokenAuthentication
+# uses simple token-based HTTP authentication scheme
+# configure the authentication classes to include TokenAuthentication
+# include rest_framework.authtoken in your INSTALLED_APPS settings
+# run migration 
+
+# if successful, TokenAuthentication provides following credential
+# request.user will be a Django User instance 
+# request.auth will be a rest_framework.authtoken.models.Token instance
+
+# if unsuccessful,
+# HTTP 401 unauthorized response with an appropriate WWW-authenticate header
+# example:
+# WWW-Authenticate: Token
+
+# Generate Token
+# using Admin Application
+# using Django manage.py command using command: 
+#       python manage.py drf_create_token<username>- this command return api token for the given user or creates a token if token does not exist for user
+# by exposing an API endpoint
+# : you can provide a mechanism for client to obtain a token given the username and password
+# from rest_framework.authtoken.views import obtain_auth_token
+# urlpatterns = [
+#     path('gettoken/', obtain_auth_token)
+# ]
+# obtain_auth_token view will return a json response when valid username and password fields are posted to the views vuing form data or json
+# pip install httpie
+# http POST http://127.0.0.1:8000/gettoken username='name' password='pass'
+# {'token': 4567898765dfgn876dfgh}
+# using Signals
+
+# httpie
+# provides command line HTTP client
+# makes cli human-friendly
+# syntax: http [flags][METHOD]URL[ITEM[ITEM]]
+# use httpie
+# get request:
+# http http://127.0.0.1:8000/stutendapi/
+# get request with auth:
+# http http://127.0.0.1:8000/stutendapi/'Authorization:Token3456543fghvcdfgh3456'
+# post request/ submitting form
+# http -f POST http://127.0.0.1:8000/stutendapi/ name='jay' roll=45 city='dfg' 'Authorization:Token345654efghtr456543erfg'
+# put request
+# http PUT http://127.0.0.1:8000/stutendapi/ name='jay' roll=45 city='dfg' 'Authorization:Token345654efghtr456543erfg'
+# delete request
+# http DELETE http://127.0.0.1:8000/stutendapi 'Authorization:Token345654efghtr456543erfg'

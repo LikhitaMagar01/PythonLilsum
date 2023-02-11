@@ -4,6 +4,7 @@ myVirtual/
 env/
 classVir/
 virtualVir/
+authEnv/
 db.sqlite3
 static/
 __pycache__/
