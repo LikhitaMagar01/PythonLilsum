@@ -365,6 +365,11 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # now, to activate the virtual environment:
 # source virtualEnv/bin/activate
 
+# virtualenvironmentwrapper - extention of virtualenv
+# pip install virtualenvwrapper
+# mkvirtualenv virVir
+# workon virVir
+
 # install Django using pip:
 # python3 -m pip install Django
 
