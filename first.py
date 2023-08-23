@@ -800,3 +800,16 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
 # http PUT http://127.0.0.1:8000/stutendapi/ name='jay' roll=45 city='dfg' 'Authorization:Token345654efghtr456543erfg'
 # delete request
 # http DELETE http://127.0.0.1:8000/stutendapi 'Authorization:Token345654efghtr456543erfg'
+
+# class Product(models.Model):
+    # title = models.CharField(max_length=255)
+    # slug = models.SlugField()
+    # description = models.TextField()
+    # #9999.99
+    # uni_price = models.DecimalField(max_digits=6, decimal_places=2)
+    # inventory = models.IntegerField()
+    # #auto_now shows the update date
+    # #auto_now_add shows the first update date
+    # last_update = models.DateTimeField(auto_now=True)
+    # collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
+    # promotions = models.ManyToManyField(Promotion, related_name='products')
