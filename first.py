@@ -815,3 +815,4 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
     # promotions = models.ManyToManyField(Promotion, related_name='products')
 
 #sample
+#sample2
