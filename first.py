@@ -813,3 +813,5 @@ onelist = ["quill", "wheel", "eraser", "referee", "trouser"]
     # last_update = models.DateTimeField(auto_now=True)
     # collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
     # promotions = models.ManyToManyField(Promotion, related_name='products')
+
+#sample
