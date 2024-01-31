@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info List</title>
+</head>
+
+<body>
+    <h1>List of Users</h1>
+    <table border="1">
+        <a href="{% url 'classbased:create' %}">create new user</a>
+        <tr>
+            <th>first name</th>
+            <th>middle name</th>
+            <th>last name</th>
+            <th>email</th>
+            <th>action</th>
+        </tr>
+        {% for u in object_list %}
+        <tr>
+            <td>{{u.first_name}}</td>
+            <td>{% if u.middle_name %} 
+                {{u.middle_name}}
+                {% else %}
+                not found
+                {% endif %}
+            </td>
+            <td>{{u.last_name}}</td>
+            <td>{{u.email}}</td>
+            <td>
+                <a href="{% url 'classbased:detail' u.id %}">detail</a> /
+                <a href="/classbased/update/{{u.id}}">update</a> /
+                <form action="/classbased/delete/{{u.id}}/" method="post" id="formdelete">
+                    {% csrf_token %}
+                    <a href="#" onclick="document.getElementById('formdelete').submit()">delete</a>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
