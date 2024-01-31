@@ -135,3 +135,22 @@ LOGIN_URL = '/user/login/'
 
 #in order to allow all user even if they are not active
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
+
+# database caching
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'Cache_Table'
+#     }
+# }
+
+# file based caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/home/likhita/documents/PythonLilsum/levelup/cache_file'
+    }
+}
+
+# python manage.py createcachetable
+# in order to create a cache table

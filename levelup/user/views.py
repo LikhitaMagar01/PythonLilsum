@@ -4,9 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from user.forms import LoginForm, SignUpForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.views.decorators.cache import cache_page
 
 USER = get_user_model()
 
+# timeout time 15 * 60 second
+@cache_page(15*60)
 def login_view(request):
 
     if request.method == 'POST':
