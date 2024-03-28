@@ -8,3 +8,4 @@ authEnv/
 db.sqlite3
 static/
 __pycache__/
+/venv

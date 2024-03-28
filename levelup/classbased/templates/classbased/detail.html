@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    first name: {{user_obj.first_name}}
+    <br>
+    middle name: {% if user_obj.middle_name %} {{user_obj.middle_name}}
+    {% else %}
+    -
+    {% endif %}
+    <br>
+    last name: {{user_obj.last_name}}
+    <br>
+    email: {{user_obj.email}}
+    <br>
+    dob:{{user_obj.dob}}
+    <br>
+    bio:{{user_obj.bio}}
+</body>
+
+</html>
