@@ -43,3 +43,60 @@ acc1 = Account(234,'53ff')
 acc1.reset_pwd('dd33')
 # acc1.__dear_user()
 acc1.greet('arri')
+
+
+# class method
+# receives the class as implicit first argument
+
+# class Person:
+#     name = "Anonymous"
+
+#     def changeName(self, name):
+#         self.name = name
+
+# p1 = Person()
+# p1.changeName("rahul")
+# print(p1.name)
+
+# to change the name attribute of class
+class Person:
+    name = "Anonymous"
+
+    # def changeName(self, name):
+    #     Person.name = name
+        # or
+        # self.__class__ = name
+
+    @classmethod
+    def changeName(cls, name):
+        cls.name = name
+
+p1 = Person()
+p1.changeName("rahul")
+print(p1.name)
+print(Person.name)
+
+
+# property decorator
+# when an attribute value is depend on function
+class Student:
+
+    def __init__(self, a_mark, b_mark, c_mark):
+        self.a_mark = a_mark
+        self.b_mark = b_mark
+        self.c_mark = c_mark
+
+    # normal way
+    # def calculate_percentage(self):
+    #     self.percent = str((self.a_mark + self.b_mark + self.c_mark) / 3) + "%"
+
+    # property way
+    # the percent method is return as an attribute or a variable of the obj s1.
+    @property
+    def percent(self):
+        return str((self.a_mark + self.b_mark + self.c_mark / 3)) + "%"
+
+s1 = Student(98, 97, 99)
+s1.a_mark = 110
+# s1.calculate_percentage()
+print(s1.percent)
